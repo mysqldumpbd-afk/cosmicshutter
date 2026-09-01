@@ -104,12 +104,14 @@
   [data-round="3"] .round-ship{left:125px;}
   @media (prefers-reduced-motion: reduce){.round-ship{transition:none;}}
   .header-deco{position:absolute;top:.5rem;right:.5rem;width:52px;height:52px;object-fit:contain;opacity:.9;pointer-events:none;filter:drop-shadow(0 3px 6px rgba(0,0,0,.4));}
-  header.in-game{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.85rem 6.3rem .85rem 1rem;text-align:left;min-height:148px;}
-  header.in-game .logo-img{max-width:90px;width:90px;margin:0;flex:none;}
+  header:not(.in-game) .in-game-row{display:contents;}
+  header.in-game{text-align:left;min-height:148px;}
+  header.in-game .in-game-row{position:relative;max-width:720px;margin:0 auto;padding:.85rem 1rem .5rem;box-sizing:border-box;}
+  header.in-game .logo-img{max-width:88px;width:88px;margin:0;}
   header.in-game p.disclaimer{display:none;}
   header.in-game .header-deco{display:none;}
   header:not(.in-game) .round-badge{display:none;}
-  header.in-game .round-badge{margin-top:0;flex:none;flex-direction:row;align-items:center;gap:.4rem;padding:.42rem .75rem;}
+  header.in-game .round-badge{position:absolute;left:50%;top:100%;transform:translate(-50%,-55%);margin:0;flex-direction:row;align-items:center;gap:.4rem;padding:.42rem .75rem;white-space:nowrap;z-index:2;}
   header.in-game .round-track{width:60px;height:18px;}
   header.in-game .round-node{width:7px;height:7px;}
   header.in-game .round-ship{width:16px;height:16px;}
@@ -497,19 +499,21 @@
     </div>
   </div>
   <h1 class="visually-hidden">Cosmic Shutter — Score Tracker</h1>
-  <img class="logo-img" id="logo-img" alt="Cosmic Shutter — Score Tracker">
-  <p class="disclaimer" data-i18n="headerDisclaimer">Proyecto de fans, no oficial · sin cuentas ni almacenamiento de datos</p>
-  <div class="round-badge" id="round-badge" data-round="1">
-    <span class="round-track">
-      <span class="round-node"></span><span class="round-node"></span><span class="round-node"></span>
-      <svg class="round-ship" id="round-ship" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2c3 3 4 7 4 11 0 2-1 4-4 7-3-3-4-5-4-7 0-4 1-8 4-11z"/>
-        <circle cx="12" cy="9" r="1.6" fill="var(--bg-panel)"/>
-        <path d="M8 15l-3 4 4-1-1-3z"/><path d="M16 15l3 4-4-1 1-3z"/>
-      </svg>
-    </span>
-    <span class="round-label" id="round-label">Ronda 1</span>
+  <div class="in-game-row" id="in-game-row">
+    <img class="logo-img" id="logo-img" alt="Cosmic Shutter — Score Tracker">
+    <div class="round-badge" id="round-badge" data-round="1">
+      <span class="round-track">
+        <span class="round-node"></span><span class="round-node"></span><span class="round-node"></span>
+        <svg class="round-ship" id="round-ship" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2c3 3 4 7 4 11 0 2-1 4-4 7-3-3-4-5-4-7 0-4 1-8 4-11z"/>
+          <circle cx="12" cy="9" r="1.6" fill="var(--bg-panel)"/>
+          <path d="M8 15l-3 4 4-1-1-3z"/><path d="M16 15l3 4-4-1 1-3z"/>
+        </svg>
+      </span>
+      <span class="round-label" id="round-label">Ronda 1</span>
+    </div>
   </div>
+  <p class="disclaimer" data-i18n="headerDisclaimer">Proyecto de fans, no oficial · sin cuentas ni almacenamiento de datos</p>
   <img class="header-deco" id="header-planets-img" alt="">
 </header>
 
