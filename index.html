@@ -491,7 +491,7 @@
       <span class="icon-control-label" data-i18n="soundLabel">Sonidos</span>
     </button>
     <div class="music-widget">
-      <button id="music-toggle-btn" class="icon-control music-toggle-btn" aria-label="Música de fondo" title="Música de fondo">
+      <button id="music-toggle-btn" class="icon-control music-toggle-btn" data-i18n-aria="musicToggle" aria-label="Música de fondo" title="Música de fondo">
         <img id="music-icon" alt="">
         <span class="icon-control-label" data-i18n="musicLabel">Música</span>
       </button>
@@ -499,7 +499,7 @@
         <div class="music-track-name" id="music-track-name">—</div>
         <div class="music-controls">
           <button id="music-mute-btn" aria-label="Silenciar música">🔇</button>
-          <input type="range" id="music-volume" min="0" max="100" value="35" aria-label="Volumen de música">
+          <input type="range" id="music-volume" min="0" max="100" value="35" data-i18n-aria="musicVolume" aria-label="Volumen de música">
           <button id="music-skip-btn" data-i18n-aria="musicSkip" aria-label="Siguiente canción">⏭</button>
         </div>
         <div class="music-credit" data-i18n="musicCredit">Música sin copyright — MokkaMusic</div>
@@ -548,7 +548,7 @@
 
   <section id="totals-section" class="zoomable">
     <div class="section-title" data-i18n="creditsTitle">Créditos interestelares</div>
-    <button class="zoom-btn" data-zoom-target="totals-section" data-i18n-aria="zoomExpand" aria-label="Ampliar marcador" title="Ampliar marcador">
+    <button class="zoom-btn" data-zoom-target="totals-section" aria-label="Ampliar marcador" title="Ampliar marcador">
       <svg class="zoom-icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
       <svg class="zoom-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
     </button>
@@ -557,7 +557,7 @@
 
   <section id="board-section" class="zoomable">
     <div class="section-title" data-i18n="boardTitle">Tablero (5 filas × 6 columnas)</div>
-    <button class="zoom-btn" data-zoom-target="board-section" data-i18n-aria="zoomExpand" aria-label="Ampliar tablero" title="Ampliar tablero">
+    <button class="zoom-btn" data-zoom-target="board-section" aria-label="Ampliar tablero" title="Ampliar tablero">
       <svg class="zoom-icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
       <svg class="zoom-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
     </button>
@@ -573,8 +573,7 @@
     <div class="section-title" data-i18n="actionsTitle">Acciones</div>
     <div class="actions">
       <button class="primary actions-full" id="calc-btn" data-i18n="actionCalc">Calcular ronda</button>
-      <button id="close-round-btn" data-i18n="actionCloseRound">Cerrar ronda</button>
-      <button id="autofill-btn" data-i18n="actionAutofill">Llenado automático (pruebas)</button>
+      <button class="actions-full" id="close-round-btn" data-i18n="actionCloseRound">Cerrar ronda</button>
       <button id="download-result-btn" class="actions-full" data-i18n="actionDownload" disabled>Descargar imagen del resultado</button>
       <div class="actions-danger-group">
         <button class="danger-outline" id="reset-all-btn" data-i18n="actionReset">Reiniciar partida</button>
@@ -730,11 +729,9 @@ let gameOver = false;
 function updateActionButtonsState(){
   const calcBtn = document.getElementById('calc-btn');
   const closeBtn = document.getElementById('close-round-btn');
-  const autofillBtn = document.getElementById('autofill-btn');
   const downloadBtn = document.getElementById('download-result-btn');
   if(calcBtn) calcBtn.disabled = gameOver;
   if(closeBtn) closeBtn.disabled = gameOver;
-  if(autofillBtn) autofillBtn.disabled = gameOver;
   if(downloadBtn) downloadBtn.disabled = !gameOver;
 }
 let board = freshBoard();
@@ -753,18 +750,18 @@ const I18N_STRINGS = {
   es: {
     headerDisclaimer: 'Proyecto de fans, no oficial · sin cuentas ni almacenamiento de datos',
     musicCredit: 'Música sin copyright — MokkaMusic',
-    musicMute: 'Silenciar música', musicUnmute: 'Activar música', musicSkip: 'Siguiente canción', musicToggle: 'Música de fondo',
+    musicMute: 'Silenciar música', musicUnmute: 'Activar música', musicSkip: 'Siguiente canción', musicToggle: 'Música de fondo', musicVolume: 'Volumen de música',
     soundLabel: 'Sonidos', musicLabel: 'Música',
     soundMute: 'Silenciar sonido', soundUnmute: 'Activar sonido',
     setupTitle: 'Configura la partida', setupHowMany: '¿Cuántos jugadores?', setupChooseColor: 'Elegí los colores en juego',
-    setupStart: 'Iniciar partida', playerCountOption: '{n} jugadores', playerLabel: 'Jugador {n}', taken: 'Ocupado',
+    setupStart: 'Iniciar partida', playerCountOption: '{n} jugadores',
     setupColorEmpty: 'Vacío', setupColorPending: 'Faltan {n} por elegir', setupColorReady: 'Colores listos',
     setupColorAutoFour: 'Con 4 jugadores se usan los 4 colores automáticamente.',
     colorAzul: 'Azul', colorAmarillo: 'Amarillo', colorVerde: 'Verde', colorBlanco: 'Blanco',
     roundLabel: 'Ronda {n}', resultRowColInline: '(fila {r}, columna {c})',
     creditsTitle: 'Créditos interestelares', camSummary: 'Inventario de cámaras',
     boardTitle: 'Tablero (5 filas × 6 columnas)', boardHint: 'Toca una casilla para elegir qué colocar ahí.',
-    actionsTitle: 'Acciones', actionCalc: 'Calcular ronda', actionCloseRound: 'Cerrar ronda', actionAutofill: 'Llenado automático (pruebas)',
+    actionsTitle: 'Acciones', actionCalc: 'Calcular ronda', actionCloseRound: 'Cerrar ronda',
     actionReset: 'Reiniciar partida', actionExit: 'Cerrar partida',
     actionDownload: 'Descargar imagen del resultado',
     resultsTitle: 'Resultado de la ronda', resultsEmpty: 'No hay cámaras colocadas todavía en el tablero.',
@@ -833,18 +830,18 @@ const I18N_STRINGS = {
   en: {
     headerDisclaimer: 'Unofficial fan project · no accounts, no data storage',
     musicCredit: 'Copyright-free music — MokkaMusic',
-    musicMute: 'Mute music', musicUnmute: 'Unmute music', musicSkip: 'Next track', musicToggle: 'Background music',
+    musicMute: 'Mute music', musicUnmute: 'Unmute music', musicSkip: 'Next track', musicToggle: 'Background music', musicVolume: 'Music volume',
     soundLabel: 'Sound', musicLabel: 'Music',
     soundMute: 'Mute sound', soundUnmute: 'Unmute sound',
     setupTitle: 'Set up the game', setupHowMany: 'How many players?', setupChooseColor: 'Pick the colors in play',
-    setupStart: 'Start game', playerCountOption: '{n} players', playerLabel: 'Player {n}', taken: 'Taken',
+    setupStart: 'Start game', playerCountOption: '{n} players',
     setupColorEmpty: 'Empty', setupColorPending: '{n} left to pick', setupColorReady: 'Colors ready',
     setupColorAutoFour: 'With 4 players, all 4 colors are used automatically.',
     colorAzul: 'Blue', colorAmarillo: 'Yellow', colorVerde: 'Green', colorBlanco: 'White',
     roundLabel: 'Round {n}', resultRowColInline: '(row {r}, column {c})',
     creditsTitle: 'Interstellar credits', camSummary: 'Camera inventory',
     boardTitle: 'Board (5 rows × 6 columns)', boardHint: 'Tap a cell to choose what to place there.',
-    actionsTitle: 'Actions', actionCalc: 'Calculate round', actionCloseRound: 'Close round', actionAutofill: 'Auto-fill (testing)',
+    actionsTitle: 'Actions', actionCalc: 'Calculate round', actionCloseRound: 'Close round',
     actionReset: 'Reset game', actionExit: 'Close game',
     actionDownload: 'Download result image',
     resultsTitle: 'Round result', resultsEmpty: 'No cameras placed on the board yet.',
@@ -913,18 +910,18 @@ const I18N_STRINGS = {
   pt: {
     headerDisclaimer: 'Projeto de fãs, não oficial · sem contas nem armazenamento de dados',
     musicCredit: 'Música sem copyright — MokkaMusic',
-    musicMute: 'Silenciar música', musicUnmute: 'Ativar música', musicSkip: 'Próxima música', musicToggle: 'Música de fundo',
+    musicMute: 'Silenciar música', musicUnmute: 'Ativar música', musicSkip: 'Próxima música', musicToggle: 'Música de fundo', musicVolume: 'Volume da música',
     soundLabel: 'Sons', musicLabel: 'Música',
     soundMute: 'Silenciar som', soundUnmute: 'Ativar som',
     setupTitle: 'Configure a partida', setupHowMany: 'Quantos jogadores?', setupChooseColor: 'Escolha as cores em jogo',
-    setupStart: 'Iniciar partida', playerCountOption: '{n} jogadores', playerLabel: 'Jogador {n}', taken: 'Ocupado',
+    setupStart: 'Iniciar partida', playerCountOption: '{n} jogadores',
     setupColorEmpty: 'Vazio', setupColorPending: 'Faltam {n} para escolher', setupColorReady: 'Cores prontas',
     setupColorAutoFour: 'Com 4 jogadores, as 4 cores são usadas automaticamente.',
     colorAzul: 'Azul', colorAmarillo: 'Amarelo', colorVerde: 'Verde', colorBlanco: 'Branco',
     roundLabel: 'Rodada {n}', resultRowColInline: '(linha {r}, coluna {c})',
     creditsTitle: 'Créditos interestelares', camSummary: 'Inventário de câmeras',
     boardTitle: 'Tabuleiro (5 linhas × 6 colunas)', boardHint: 'Toque em uma casa para escolher o que colocar ali.',
-    actionsTitle: 'Ações', actionCalc: 'Calcular rodada', actionCloseRound: 'Encerrar rodada', actionAutofill: 'Preenchimento automático (testes)',
+    actionsTitle: 'Ações', actionCalc: 'Calcular rodada', actionCloseRound: 'Encerrar rodada',
     actionReset: 'Reiniciar partida', actionExit: 'Encerrar partida',
     actionDownload: 'Baixar imagem do resultado',
     resultsTitle: 'Resultado da rodada', resultsEmpty: 'Ainda não há câmeras colocadas no tabuleiro.',
@@ -1005,9 +1002,13 @@ function applyI18n(){
   const langSelectEl = document.getElementById('lang-select');
   if(langSelectEl) langSelectEl.value = currentLang;
   const muteEl = document.getElementById('sound-toggle');
-  if(muteEl) muteEl.setAttribute('aria-label', Sound.isMuted() ? t('soundUnmute') : t('soundMute'));
+  if(muteEl){ const soundLbl = Sound.isMuted() ? t('soundUnmute') : t('soundMute'); muteEl.setAttribute('aria-label', soundLbl); muteEl.setAttribute('title', soundLbl); }
   const musicMuteEl = document.getElementById('music-mute-btn');
-  if(musicMuteEl) musicMuteEl.setAttribute('aria-label', BGMusic.isMuted() ? t('musicUnmute') : t('musicMute'));
+  if(musicMuteEl){ const musicLbl = BGMusic.isMuted() ? t('musicUnmute') : t('musicMute'); musicMuteEl.setAttribute('aria-label', musicLbl); musicMuteEl.setAttribute('title', musicLbl); }
+  document.querySelectorAll('.zoom-btn').forEach(zbtn => {
+    const target = document.getElementById(zbtn.dataset.zoomTarget);
+    setZoomBtnState(zbtn, !!(target && target.classList.contains('zoomed')));
+  });
   // Re-renderiza los bloques generados por JS para que también cambien de idioma
   if(typeof setRoundBadge === 'function' && typeof roundNumber !== 'undefined') setRoundBadge(roundNumber);
   if(typeof renderPlayerCountSelector === 'function' && document.getElementById('playercount-selector')) renderPlayerCountSelector();
@@ -2272,10 +2273,6 @@ function showWarning(message){
   showConfirm(message, () => {}, {okLabel:t('warningOk'), okClass:'primary', hideCancel:true});
 }
 
-document.getElementById('autofill-btn').addEventListener('click', () => {
-  if(gameOver) return;
-  autoFillBoard();
-});
 document.getElementById('reset-all-btn').addEventListener('click', () => {
   showConfirm(t('confirmResetMsg'), () => {
     board = freshBoard();
@@ -2340,7 +2337,11 @@ document.addEventListener('click', (e) => {
 document.getElementById('music-mute-btn').addEventListener('click', () => {
   const willMute = !BGMusic.isMuted();
   BGMusic.setMuted(willMute);
-  document.getElementById('music-mute-btn').textContent = willMute ? '🔈' : '🔇';
+  const btn = document.getElementById('music-mute-btn');
+  btn.textContent = willMute ? '🔈' : '🔇';
+  const lbl = willMute ? t('musicUnmute') : t('musicMute');
+  btn.setAttribute('aria-label', lbl);
+  btn.setAttribute('title', lbl);
 });
 document.getElementById('music-volume').addEventListener('input', (e) => {
   BGMusic.setVolume(Number(e.target.value) / 100);
@@ -2365,6 +2366,12 @@ document.addEventListener('keydown', startMusicOnFirstInteraction);
 function closeAllZoom(){
   document.querySelectorAll('.zoomable.zoomed').forEach(s => s.classList.remove('zoomed'));
   document.getElementById('zoom-backdrop').classList.remove('active');
+  document.querySelectorAll('.zoom-btn').forEach(zbtn => setZoomBtnState(zbtn, false));
+}
+function setZoomBtnState(btn, isZoomed){
+  const label = isZoomed ? t('zoomClose') : t('zoomExpand');
+  btn.setAttribute('aria-label', label);
+  btn.setAttribute('title', label);
 }
 document.querySelectorAll('.zoom-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -2375,6 +2382,7 @@ document.querySelectorAll('.zoom-btn').forEach(btn => {
     if(zooming){
       el.classList.add('zoomed');
       document.getElementById('zoom-backdrop').classList.add('active');
+      setZoomBtnState(btn, true);
     }
   });
 });
